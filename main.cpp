@@ -66,7 +66,7 @@ void insert_into(int id, QString name, QString email){
 
 }
 
-//delete from users where name = 'jonas';
+
 void delete_from(QString name){
     QSqlQuery query;
     query.prepare("DELETE FROM users WHERE name = ?");
@@ -127,12 +127,7 @@ void update_number(QString name, QString newNumber){
          QString name2 = q.value(1).toString();
          QString email2 = q.value(2).toString();
          qDebug() << name2 << email2 << id;
-         /*
-         q2.prepare("UPDATE users SET name = :name WHERE id = :id");//nem volt jó a ':name'.........:(
-         q2.bindValue(":name", newName);
-         q2.bindValue(":id", id);
-         q2.exec();
-         */
+         
      }
      QSqlQuery q3;
      q3.prepare("SELECT * FROM users WHERE name =:name");
@@ -152,7 +147,7 @@ void update_number(QString name, QString newNumber){
 void update_name(QString name, QString newName){
     cout <<"update:"<<endl;
     QSqlQuery q2;
-     q2.prepare("UPDATE users SET name = :name WHERE name = :name");//nem volt jó a ':name'.........:(
+     q2.prepare("UPDATE users SET name = :name WHERE name = :name");
      q2.bindValue(":name", newName);
      q2.bindValue(":name", name);
      q2.exec();
@@ -178,7 +173,7 @@ void update_name(QString name, QString newName){
          QString name2 = q.value(1).toString();
          QString email2 = q.value(2).toString();
          qDebug() << name2 << email2 << id;
-         q2.prepare("UPDATE users SET name = :name WHERE id = :id");//nem volt jó a ':name'.........:(
+         q2.prepare("UPDATE users SET name = :name WHERE id = :id");
          q2.bindValue(":name", newName);
          q2.bindValue(":id", id);
          q2.exec();
